@@ -8,5 +8,5 @@
 2. [함수형으로 전환하기 1](http://1ilsang.blog.me/221232065315)
    - map, filter, each, 내-외부 다형성
 3. [함수형으로 전환하기 2](http://1ilsang.blog.me/221232386541)
-  - curry, curryr
+   - curry, curryr
 4. 
