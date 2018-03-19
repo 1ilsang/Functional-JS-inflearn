@@ -7,6 +7,6 @@
     -  순수함수, 일급함수, add_maker
 2. [함수형으로 전환하기 1](http://1ilsang.blog.me/221232065315)
    - map, filter, each, 내-외부 다형성
-<br/>
-3. 컬렉션 중심 프로그래밍
+3. [함수형으로 전환하기 2](http://1ilsang.blog.me/221232386541)
+  - curry, curryr
 4. 
