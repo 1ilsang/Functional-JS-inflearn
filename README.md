@@ -5,7 +5,6 @@
 
 1. [함수형 프로그래밍의 개요](http://1ilsang.blog.me/221229579578)
     -  순수함수, 일급함수, add_maker
-<br/>
 2. [함수형으로 전환하기 1](http://1ilsang.blog.me/221232065315)
    - map, filter, each, 내-외부 다형성
 <br/>
