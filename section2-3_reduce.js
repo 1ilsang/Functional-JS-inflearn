@@ -99,3 +99,59 @@ _go(
     },
     console.log
 );
+//////////////////////////////////
+console.clear();
+//6. _each의 외부 다형성 높이기
+    //1. _each에 null 넣어도 에러가 나지 않게.
+function _each(list, iter) {
+    for(var i = 0; i < _get(list)('length'); i++){
+        iter(list[i]);
+    }
+    return list;
+}
+_each(null, console.log);
+    //2. _keys 만들기
+console.log(Object.keys({name:'1ilsang', age:33}));
+console.log(Object.keys([1, ,2]));  //[0, 2]
+console.log(Object.keys(10));       //[]
+// console.log(Object.keys(null));     //err!
+
+function _is_object(obj) {
+    return typeof obj == 'object' && !!obj;
+}
+function _keys(obj) {
+    return _is_object(obj) ? Object.keys(obj) : [];
+}
+console.log(_keys(null));
+    //4. _each 외부 다형성 높이기
+function _each(list, iter) {
+    var keys = _keys(ist);
+    for(var i = 0; i < keys.length; i++){
+        iter(list[keys[i]]);
+    }
+    return list;
+}
+_each({
+    13: 'ID',
+    29: 'HD',
+    30: 'YD'
+}, function (name) {
+    console.log(name);
+});
+console.log(_map({
+    13:'id',
+    20:'hd',
+    3:'22'
+}, function (name) {
+    return name.toLowerCase();
+}));
+_go({
+    1:users[0],
+    3:users[2],
+    5:users[4]
+    },
+    // _map(function (user) {
+    //     return user.name.toLowerCase();
+    // }),
+    console.log);
+

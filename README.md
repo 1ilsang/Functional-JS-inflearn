@@ -9,5 +9,5 @@
    - map, filter, each, 내-외부 다형성
 3. [함수형으로 전환하기 2](http://1ilsang.blog.me/221232386541)
    - curry, curryr
-4. [함수형으로 전환하기 3]()
-    - Reduce
+4. [함수형으로 전환하기 3](http://1ilsang.blog.me/221234585834)
+    - reduce, pipe, 다형성
