@@ -11,3 +11,6 @@
    - curry, curryr
 4. [함수형으로 전환하기 3](http://1ilsang.blog.me/221234585834)
     - reduce, pipe, 다형성
+5. [컬렉션 중심 프로그래밍](http://1ilsang.blog.me/221235371649)
+    - values, pluck, reject, compact, find, some, ever, group_by, count
+    

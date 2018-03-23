@@ -1,12 +1,12 @@
 var users = [
-    {id: 1, name: 'AB', age: 36, value: 'HI'},
+    {id: 1, name: 'AB', age: 36},
     {id: 2, name: 'CD', age: 22},
     {id: 3, name: 'EF', age: 37},
     {id: 4, name: 'GH', age: 34},
     {id: 5, name: 'IJ', age: 35},
     {id: 6, name: 'KL', age: 36},
     {id: 7, name: 'MN', age: 37},
-    {id: 8, name: 'OP', age: 38}
+    {id: 8, name: 'OP', age: 18}
 ];
 
 function _curry(fn) {
@@ -345,17 +345,80 @@ _go(users,
     _min_by(_get('age')),
     _get('name'),
     console.log
-);
+)
+;
 console.clear();
+
 //  2. group_by, push
+// var users2 = {
+//     36 : {id: 1, name: 'AB', age: 36},
+//     ...
+// }
+function _push(obj, key, val) {
+    (obj[key] = obj[key] || []).push(val);
+    return obj;
+}
+var _group_by = _curryr(function (data, iter) {
+    return _reduce(data, function (grouped, val) {
+        return _push(grouped, iter(val), val);
+    }, {});
+});
+_go(users,
+    _group_by(function (user) {
+        return user.age;
+    }),
+    console.log);
+console.log('///');
+_go(users,
+    _group_by(function (user) {
+        return user.age - user.age % 10;
+    }),
+    console.log);
+_go(users,
+    _group_by(function (user) {
+        return user.name;
+    }),
+    console.log);
+
+var _head = function (list) {
+    return list[0];
+}
+_go(users,
+    _group_by(_pipe(_get('name'), _head)),
+    console.log);
+
 //  3. count_by, inc
+var _count_by = _curryr(function (data, iter) {
+    return _reduce(data, function (count, val) {
+        return _inc(count, iter(val));
+    }, {});
+});
 
+console.log(
+    _count_by(users, function (user) {
+        return user.age - user.age % 10;
+    })
+);
 
+var _inc = function (count, key) {
+    count[key] ? count[key]++ : count[key] = 1;
+    return count;
+}
 
+_go(users,
+    _count_by(function (user) {
+        return user.age - user.age % 10;
+    }),
+    _map((count, key) => `<li>${key}대는 ${count}명 입니다.</li>`),
+    list => '<ul>' + list.join('') + '</ul>',
+    console.log);
 
-
-
-
+_go(users,
+    _reject(function (user) {return user.age < 20;})
+    _count_by(function (user) {return user.age - user.age % 10;}),
+    _map((count, key) => `<li>${key}대는 ${count}명 입니다.</li>`),
+    list => '<ul>' + list.join('') + '</ul>',
+    console.log);
 
 
 
