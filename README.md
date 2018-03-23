@@ -13,4 +13,7 @@
     - reduce, pipe, 다형성
 5. [컬렉션 중심 프로그래밍](http://1ilsang.blog.me/221235371649)
     - values, pluck, reject, compact, find, some, ever, group_by, count
+6. [지연 평가, 앞선 내용 요약](http://1ilsang.blog.me/221235663973)
+    - 언더스코어, partial, 지연평가, 동시성, 병렬성
+ 
     

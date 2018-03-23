@@ -1,0 +1,23 @@
+{
+  "name": "funtionaljs",
+  "version": "1.0.0",
+  "description": "#### [인프런 강좌를 보며 정리 & 실습 한 내용입니다.](https://www.inflearn.com/course/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/) ================================================",
+  "main": "mytest.js",
+  "dependencies": {
+    "partial-js": "^1.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1ilsang/Functional-JS-inflearn.git"
+  },
+  "author": "Jackson Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1ilsang/Functional-JS-inflearn/issues"
+  },
+  "homepage": "https://github.com/1ilsang/Functional-JS-inflearn#readme"
+}

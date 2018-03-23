@@ -414,8 +414,12 @@ _go(users,
     console.log);
 
 _go(users,
-    _reject(function (user) {return user.age < 20;})
-    _count_by(function (user) {return user.age - user.age % 10;}),
+    _reject(function (user) {
+        return user.age < 20;
+    }),
+    _count_by(function (user) {
+        return user.age - user.age % 10;
+    }),
     _map((count, key) => `<li>${key}대는 ${count}명 입니다.</li>`),
     list => '<ul>' + list.join('') + '</ul>',
     console.log);
