@@ -20,5 +20,5 @@
     - 언더스코어, partial, 지연평가, 동시성, 병렬성
 7. [실전코드조각1](http://1ilsang.blog.me/221237771328)
     - where, pluck, filter, contains, map, uniq, extend, flatten, deep_pluck  
-8. [실전코드조각2]()
-    -     
+8. [실전코드조각2](http://1ilsang.blog.me/221238107720)
+    - JSON 값 가져오기, 합치기 등
