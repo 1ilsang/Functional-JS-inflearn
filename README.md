@@ -15,5 +15,6 @@
     - values, pluck, reject, compact, find, some, ever, group_by, count
 6. [지연 평가, 앞선 내용 요약](http://1ilsang.blog.me/221235663973)
     - 언더스코어, partial, 지연평가, 동시성, 병렬성
- 
+7. [실전코드조각1](http://1ilsang.blog.me/221237771328)
+    - where, pluck, filter, contains, map, uniq, extend, flatten, deep_pluck  
     

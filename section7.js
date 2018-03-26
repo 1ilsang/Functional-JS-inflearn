@@ -133,18 +133,131 @@ _.go(
 )
 
 //5. users + posts + comments (index_by와 group_by로 효율 높이기)
+//초기
+// var comments2 = _.map(comments, function (comment) {
+//     return _.extend({
+//         user: _.find(users, function (user) {
+//             return user.id == comment.user_id;
+//         })
+//     }, comment);
+// });
+// console.log(comments2);
 
-//6.
+//index_by의 경우 1:1 쌍으로 묶어준다.
+var users2 = _.index_by(users, 'id');
+// console.log(users2);
+function find_user_by_id(user_id) {
+    return users2[user_id];
+}
+var comments2 = _.map(comments, function (comment) {
+    return _.extend({
+        user: find_user_by_id(comment.user_id)
+    }, comment);
+});
+// console.log(comments2);
 
+console.clear();
+console.log('////////////////////');
+////
+//posts에 users와 commets를 달아주자.
+var comments2 = _.go(
+    comments,
+    _.map(function (comment) {
+        return _.extend({
+            user:find_user_by_id(comment.user_id)
+        }, comment);
+    }),
+    _.group_by('post_id')
+);
+// console.log(comments2);
+// var posts2 = _.map(posts, function (post) {
+//     return _.extend({
+//         comments: comments2[post.id],
+//         user: find_user_by_id(post.user_id)
+//     }, post);
+// });
+var posts2 = _.go(
+    posts,
+    _.map(function (post) {
+        return _.extend({
+            comments: comments2[post.id] || [],
+            user : find_user_by_id(post.user_id)
+        }, post);
+    }),
+    _.group_by('user_id')
+);
+console.log(posts2);
+// var users3 = _.map(users2, function (user) {
+//     return _.extend({
+//         posts: _.filter(posts2, function (post) {
+//             return post.user_id == user.id;
+//         })
+//     }, user);
+//     //기본값을 직접 변경할 경우 재귀가 생긴다.
+//     // user.posts = _.filter(posts2, function (post) {
+//     //     return post.user_id == user.id;
+//     // })
+//     //따라서 extend로 해주어야 한다.
+// });
+var users3 = _.map(users2, function (user) {
+    return _.extend({
+        posts: posts2[user.id] || []
+    }, user);
+});
+console.log(users3);
+// console.log('dd', users3[0].posts[0].comments[0].user);
 
+//5.1 특정인의 posts의 모든 comments 거르기
+var user = users3[0]; //특정인
+_.go(user.posts,  //해당 특정인의 모든 글
+    _.pluck('comments'),  //그중 comments를
+    _.flatten,          //단조롭게 해준다.(중첩 배열 제거)
+    console.log
+)
+console.log(
+    _.deep_pluck(user, 'posts.comments'),
+);
 
+//5.2 특정인의 posts에 comments를 단 친구의 이름들 뽑기
+_.go(
+    user.posts,
+    _.pluck('comments'),
+    _.flatten,
+    _.pluck('user'),
+    _.pluck('name'),
+    _.uniq,
+    console.log
+)
 
+_.go(
+    user,
+    _.deep_pluck('posts.comments.user.name'),
+    _.uniq,
+    console.log
+)
 
+//5.3 특정인의 posts에 comments를 단 친구들 카운트 정보
+_.go(
+    user,
+    _.deep_pluck('posts.comments.user.name'),
+    _.uniq,
+    _.count_by,
+    console.log
+)
 
-
-
-
-
+// //5.4 특정인이 comments를 단 posts 거르기
+// var posts3 = _.group_by(posts2, 'user_id');
+//
+// console.log(posts3);
+// console.log(
+//     _.filter(
+//         posts3, function (post) {
+//             return _.find(post.comments, function (comment) {
+//                 return comment.user_id == 105;
+//             });
+//         }
+//     )
+// );
 
 
 
