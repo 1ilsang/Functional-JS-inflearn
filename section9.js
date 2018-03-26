@@ -75,4 +75,4 @@ _.go(
     list,
     _.map(square),
     console.log
-)
+);

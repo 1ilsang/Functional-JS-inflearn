@@ -22,3 +22,5 @@
     - where, pluck, filter, contains, map, uniq, extend, flatten, deep_pluck  
 8. [실전코드조각2](http://1ilsang.blog.me/221238107720)
     - JSON 값 가져오기, 합치기 등
+9. [비동기 처리](http://1ilsang.blog.me/221238108709)
+    - Promise, go :: 명령형과 함수형의 비동기 처리 방식 비교
