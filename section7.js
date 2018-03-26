@@ -29,24 +29,127 @@ var comments = [
 ];
 
 //1. 특정인의 posts의 모든 comments 거르기
-
-_.go(
-    _.filter(posts, function (posts) {
-        return posts.user_id == 101;
-    }),
-    function (posts) {
+//기본.
+// _.go(
+//     _.where(posts, { user_id : 101 }),
+//     _.pluck('id'),
+//     function (post_ids) {
+//         return _.filter(comments, function (comment) {
+//             return _.contains(post_ids, comment.post_id);
+//         });
+//     },
+//     console.log
+// )
+//
+// //2. 특정인의 posts에 comments를 단 친구의 이름들 뽑기
+// _.go(
+//     _.where(posts, { user_id : 101 }),
+//     _.pluck('id'),
+//     function (post_ids) {
+//         return _.filter(comments, function (comment) {
+//             return _.contains(post_ids, comment.post_id);
+//         });
+//     },
+//     _.map(function (comment) {
+//         return _.find(users, function (user) {
+//             return user.id == comment.user_id;
+//         }).name;
+//     }),
+//     _.uniq,
+//     console.log
+// )
+//공통영역으로 빼기
+function posts_by(attr) {
+    return _.where(posts, attr);
+}
+var comments_by_posts = _.pipe(
+    _.pluck('id'),
+    function (post_ids) {
         return _.filter(comments, function (comment) {
-            return
-        })
-    }
-)
+            return _.contains(post_ids, comment.post_id);
+        });
+    },
+);
+
+//1. 특정인의 posts의 모든 comments 거르기
+var f1 = _.pipe(posts_by, comments_by_posts);
+//
+// _.go({user_id: 101},
+//     posts_by,
+//     comments_by_posts,
+//     console.log
+// )
+console.log(f1({user_id : 101}));
 
 //2. 특정인의 posts에 comments를 단 친구의 이름들 뽑기
+// _.go(
+//     {user_id : 101},
+//     posts_by,
+//     comments_by_posts,
+//     _.map(function (comment) {
+//         return _.find(users, function (user) {
+//             return user.id == comment.user_id;
+//         }).name;
+//     }),
+//     _.uniq,
+//     console.log
+// );
+
+var comments_to_user_names = _.map(function (comment) {
+            return _.find(users, function (user) {
+                return user.id == comment.user_id;
+            }).name;
+        });
+
+var f2 = _.pipe(
+    f1,
+    comments_to_user_names,
+    _.uniq
+);
+
+console.log(f2({user_id:101}));
 
 //3. 특정인의 posts에 comments를 단 친구들 카운트 정보
+var f3 = _.pipe(
+    f1,
+    comments_to_user_names,
+    _.count_by
+);
+console.log(
+    f3({user_id:101})
+);
 
 //4. 특정인이 comment를 단 posts 거르기
+_.go(
+    _.where(comments, {user_id:105}),
+    _.pluck('post_id'),
+    _.uniq,
+    function (post_ids) {
+        return _.filter(posts, function (post) {
+            return _.contains(post_ids, post.id);
+        });
+    },
+    console.log
+)
 
 //5. users + posts + comments (index_by와 group_by로 효율 높이기)
 
 //6.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
