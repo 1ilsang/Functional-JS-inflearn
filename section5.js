@@ -89,11 +89,12 @@ function _reduce(list, iter, memo) {
 }
 
 function _pipe() {
-    var fns = arguments;
-    return function (arg) {
+    var fns = arguments; //함수들을 arg배열로 받는다.
+    return function (arg) { //pipe의 실행 결과는 함수다. 나중에 실행될 함수를 리턴
+        //arg는 인자로 받는 녀석. -> f(1) 등
         return _reduce(fns, function (arg, fn) {
             return fn(arg);
-        }, arg);
+        }, arg); //받은 인자를 reduce의 시작값으로 설정
     };
 }
 
@@ -101,6 +102,7 @@ function _go(arg) {
     var fns = _rest(arguments);
     return _pipe.apply(null, fns)(arg);
 }
+
 
 var _values = _map(_identity);
 
