@@ -1,21 +1,21 @@
-// function _curry(fn) {
-//     return function(a) {
-//         return function(b) {
-//             return fn(a, b);
-//         }
-//     }
-// }
+function _curry(fn) {
+    return function(a) {
+        return function(b) {
+            return fn(a, b);
+        }
+    }
+}
 
-// var add = _curry(function(a, b) {
-//     return a+ b;
-// });
+var add = _curry(function(a, b) {
+    return a+ b;
+});
 
-// var add10 = add(10);
+var add10 = add(10);
 
-// console.log(add10(5));
-// console.log(add(5)(3));
+console.log(add10(5));
+console.log(add(5)(3));
 
-// console.log(add(1, 2)(2));
+console.log(add(1, 2));
 ///////////////////////////////////////////////////
 function _curry(fn) {
     return function(a, b) {

@@ -17,7 +17,7 @@ _.go(
 );
 console.log(i);
 
-var i = 0;
+var i = 0;-
 _.go(
     _.range(100),
     L.map(function (val) {

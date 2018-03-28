@@ -30,7 +30,7 @@ function add4(obj, b) {
     obj.val += b;
 }
 console.log(obj1.val);
-add(obj,1);
+add(obj1,1);
 console.log(obj1.val);
 
 //순수 함수
@@ -60,6 +60,7 @@ console.log(
     f3(function() {
     return 10;
 }));
+console.clear();
 //===================================================
 // add_maker
 function add_maker(a) {
@@ -69,7 +70,11 @@ function add_maker(a) {
 }
 
 var add10 = add_maker(10);
+var add5 = add_maker(5);
+
 console.log(add10(20));
+console.log(add_maker(10)(20));
+console.log(add5(15));
 
 //===================================================
 function f4(f1, f2, f3) {
