@@ -1,8 +1,12 @@
 # 자바스크립트로 알아보는 함수형 프로그래밍
 
+![이미지](https://postfiles.pstatic.net/MjAxODA0MDJfMjMx/MDAxNTIyNjYwNDU0Nzc4.zYfFUekLjol9Wh0oFeR6LMVHkPNSNW48wyw0eTMPyXMg.eNvAJ522859HxAsJFfHzEKEKfG0UW5X67hrs_--bQdcg.JPEG.1ilsang/%EC%8A%AC%EB%9D%BC%EC%9D%B4%EB%93%9C01.jpeg?type=w966)
+
 #### [인프런 강좌를 보며 정리 & 실습 한 내용입니다.](https://www.inflearn.com/course/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D/)
 
 ================================================
+
+[세미나 자료](http://1ilsang.blog.me/221243281518)
 
 아래의 번호와 section 파일의 숫자가 동일합니다.
 
